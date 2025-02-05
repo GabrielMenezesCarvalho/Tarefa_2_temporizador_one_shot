@@ -56,7 +56,7 @@ int main() {
 
 void gpio_irq_handler(uint gpio, uint32_t events) {
     uint32_t tempo_atual = to_us_since_boot(get_absolute_time());
-    if (tempo_atual - ultimo_tempo > 200000) { // 200ms de debounce
+    if (tempo_atual - ultimo_tempo > 100000) { // 100ms de debounce
         ultimo_tempo = tempo_atual;
         if (gpio_get(BOTAO) == 0 && !leds_ativos) {
             leds_ativos = true;
